@@ -1,4 +1,10 @@
-import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
+import {
+  useParams,
+  Link,
+  useNavigate,
+  useLocation,
+  Outlet,
+} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   getMovieById,
@@ -50,18 +56,18 @@ const SinglePostPage = () => {
             <p>{genres}</p>
           </div>
         </div>
-
         <div className={css.inform}>
           <h2>Addition information</h2>
           <ul>
-            <Link to="cast">
+            <Link to="cast" state={{ from }}>
               <li>Cast</li>
             </Link>
-            <Link to="reviews">
+            <Link to="reviews" state={{ from }}>
               <li>Reviews</li>
             </Link>
           </ul>
         </div>
+        <Outlet />
       </>
     );
   }

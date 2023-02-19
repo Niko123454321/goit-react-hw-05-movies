@@ -5,6 +5,8 @@ import HomePage from 'components/pages/HomePage/HomePage';
 import MoviesPage from 'components/pages/MoviesPage/Movies';
 import NotFoundPage from 'components/pages/NotFoundPage/NotFoundPage';
 import SinglePostPage from 'components/pages/SinglePostPage/SinglePostPage';
+import Cast from 'components/Cast/Cast';
+import Reviews from 'components/Reviews/Reviews';
 export default function App() {
   return (
     <BrowserRouter>
@@ -12,7 +14,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:id" element={<SinglePostPage />} />
+        <Route path="/movies/:id" element={<SinglePostPage />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
