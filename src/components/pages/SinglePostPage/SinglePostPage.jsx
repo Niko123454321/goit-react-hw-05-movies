@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import {
   getMovieById,
@@ -9,6 +9,9 @@ import css from './singlePostPage.module.css';
 const SinglePostPage = () => {
   const [movie, setMovie] = useState();
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from || '/';
 
   useEffect(() => {
     if (!id) {
@@ -31,6 +34,7 @@ const SinglePostPage = () => {
     }
     return (
       <>
+        <button onClick={() => navigate(from)}>Go back</button>
         <div className={css.div}>
           <img
             className={css.img}
@@ -45,6 +49,18 @@ const SinglePostPage = () => {
             <h2>Genres</h2>
             <p>{genres}</p>
           </div>
+        </div>
+
+        <div className={css.inform}>
+          <h2>Addition information</h2>
+          <ul>
+            <Link to="cast">
+              <li>Cast</li>
+            </Link>
+            <Link to="reviews">
+              <li>Reviews</li>
+            </Link>
+          </ul>
         </div>
       </>
     );
