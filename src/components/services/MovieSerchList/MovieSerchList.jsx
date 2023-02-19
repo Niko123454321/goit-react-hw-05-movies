@@ -12,14 +12,7 @@ const MovieSearchList = ({ films }) => {
       className={css.wrapSearchList}
     >
       <li className={css.seachList}>
-        <img
-          src={
-            poster_path
-              ? getPosterPath(poster_path, 300)
-              : 'https://via.placeholder.com/320x480'
-          }
-          alt={title}
-        />
+        <img src={getPosterPath(poster_path, 300)} alt={title} />
       </li>
       <p>{title}</p>
     </Link>

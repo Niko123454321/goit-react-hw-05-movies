@@ -44,5 +44,5 @@ export const getCast = async movie_id => {
 export const getPosterPath = (path, width = 500) => {
   return path
     ? SMALL_POSTER_PATH + width + path
-    : 'https://via.placeholder.com/';
+    : `https://via.placeholder.com/${width}x${width * 1.5}`;
 };

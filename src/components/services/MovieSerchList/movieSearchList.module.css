@@ -3,7 +3,6 @@
   padding-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
 .seachList {
@@ -11,5 +10,6 @@
 }
 
 .wrapSearchList {
-  width: calc((100% - 100px) / 5);
+  width: calc(100% / 5);
+  padding: 25px;
 }
