@@ -29,7 +29,7 @@ export const getSearchMovie = async title => {
 
 export const getReview = async review_id => {
   const { data } = await instance.get(
-    `review/${review_id}?api_key=be54c980e387a968afdb3128f8703296`
+    `movie/${review_id}/reviews?api_key=be54c980e387a968afdb3128f8703296`
   );
   return data;
 };
