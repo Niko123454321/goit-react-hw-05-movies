@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from 'components/Navbar/Navbar';
 import HomePage from 'components/pages/HomePage/HomePage';
-import MoviesPage from 'components/pages/MoviesPage/Movies';
+import MoviesPage from 'components/pages/MoviesPage/MoviesPage';
 import NotFoundPage from 'components/pages/NotFoundPage/NotFoundPage';
 import SinglePostPage from 'components/pages/SinglePostPage/SinglePostPage';
 import Cast from 'components/Cast/Cast';

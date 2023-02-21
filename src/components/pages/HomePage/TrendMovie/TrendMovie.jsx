@@ -9,8 +9,8 @@ const TrendingMovies = () => {
       try {
         const data = await getTrendingMovies();
         setFilms(prevFilms => data.results);
-      } catch (error) {
-        console.log(error);
+      } catch ({ response }) {
+        console.log(response.data.message);
       }
     };
     fetchMovies();
