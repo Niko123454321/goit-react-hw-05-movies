@@ -8,7 +8,7 @@ const MovieSearchList = ({ films }) => {
     <Link
       to={`/movies/${id}`}
       key={id}
-      state={location}
+      state={{ from: location }}
       className={css.wrapSearchList}
     >
       <li className={css.seachList}>

@@ -1,11 +1,5 @@
-import {
-  useParams,
-  Link,
-  useNavigate,
-  useLocation,
-  Outlet,
-} from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
 import {
   getMovieById,
   getPosterPath,
@@ -16,8 +10,7 @@ const SinglePostPage = () => {
   const [movie, setMovie] = useState();
   const { id } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
-  const from = location.state?.from || '/';
+  const cameBack = location.state?.from ?? '/';
 
   useEffect(() => {
     if (!id) {
@@ -33,14 +26,17 @@ const SinglePostPage = () => {
     };
     feachMovie();
   }, [id]);
+
   if (movie) {
     const genres = [];
     for (const genre of movie.genres) {
       genres.push(genre.name, ' ');
     }
     return (
-      <>
-        <button onClick={() => navigate(from)}>Go back</button>
+      <div>
+        <Link to={cameBack}>
+          <button type="button">Go back</button>
+        </Link>
         <div className={css.div}>
           <img
             className={css.img}
@@ -59,16 +55,18 @@ const SinglePostPage = () => {
         <div className={css.inform}>
           <h2>Addition information</h2>
           <ul>
-            <Link to="cast" state={{ from }}>
+            <Link to="cast" state={{ from: cameBack }}>
               <li>Cast</li>
             </Link>
-            <Link to="reviews" state={{ from }}>
+            <Link to="reviews" state={{ from: cameBack }}>
               <li>Reviews</li>
             </Link>
           </ul>
         </div>
-        <Outlet />
-      </>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
+      </div>
     );
   }
 };
